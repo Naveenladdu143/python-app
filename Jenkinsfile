@@ -20,7 +20,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY}"
                     sh "docker tag Naveenladdu/flask-app:latest flask-app:latest.v1"
-                    sh "docker push flask-app"
+                    sh "docker push flask-app:latest.v1"
                 }
             }
         }

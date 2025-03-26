@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CONTAINER_NAME="flask-app"
+
+if [ $(docker ps --filter "name=${CONTAINER_NAME}" --filter "status=running" -q) ]; then
+    echo "The Docker container ${CONTAINER_NAME} is running." | mail -s "Docker Container Status" 
+else
+    
+    echo "The Docker container ${CONTAINER_NAME} is NOT running!" | mail -s "Docker Container Failure" 
+fi
